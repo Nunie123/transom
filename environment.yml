@@ -1,0 +1,6 @@
+name: transom
+dependencies:
+  - python=3.6
+  - pymysql
+  - xlsxwriter
+  - SQLAlchemy
