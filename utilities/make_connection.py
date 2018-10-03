@@ -1,12 +1,7 @@
 import pymysql
 from sqlalchemy import create_engine
 
-from utilities.helpers import get_single_dict_from_json, get_full_path
-
-def get_connection_details(connection_name):
-    connections_path = get_full_path(filename='connections.json', subfolder='settings')
-    connection_dict = get_single_dict_from_json(connections_path, 'connection_name', connection_name)
-    return connection_dict
+from utilities.helpers import get_single_dict_from_json, get_full_path, get_connection_details
 
 
 class ConnectionManager():
@@ -23,7 +18,7 @@ class ConnectionManager():
         self.db_type = connection_dict.get('db_type')
         self.username = connection_dict.get('username')
         self.password = connection_dict.get('password')
-        self.default_schema = connection_dict.get('default_schema')
+        self.default_db = connection_dict.get('default_db')
 
     def connect(self):
         try:

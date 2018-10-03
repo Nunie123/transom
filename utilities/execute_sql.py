@@ -2,6 +2,11 @@ import sqlalchemy as sa
 
 
 def execute_sql_string(connection_manager, raw_sql_string):
+    '''
+    This function can execute multiple SQL statements.
+    The output is a list of a list of tuples.  e.g. [ [ (one, two), (three, four) ], [ (1,2), (3,4) ] ]
+    The first tuple in the inner list is the headers.
+    '''
     sql_list = raw_sql_string.split(';')
     results = []
     cleaned_sql_list = [sql for sql in sql_list if sql]
@@ -31,6 +36,3 @@ def execute_stored_procedure(connection_manager, sp_name, sp_arguments_list=None
     result = execute_sql_string(connection_manager, sql_string)
     return result
 
-
-def convert_results_to_2d_list(results):
-    pass
